@@ -3,15 +3,15 @@
 <head>
     <title>Who Page</title>
     <style>
-        
+        /* Define styles for each "who" element */
         .who {
-          
-            font-size: calc(12px + (300px * var(--random)));
-            
+            /* Set random font size between 12px and 96px */
+            font-size: calc(12px + (84 * var(--random)));
+            /* Set random position within the viewport on both x and y axes */
             position: absolute;
             top: calc(var(--random-y) * 100vh);
             left: calc(var(--random-x) * 100vw);
-           
+            /* Set random font family from the list */
             font-family: var(--font-family);
         }
     </style>
@@ -19,25 +19,40 @@
 <body>
     <!-- Repeat "who" 50 times using JavaScript -->
     <script>
-        for (let i = 0; i < 50; i++) {
-          
-            const whoElement = document.createElement('div');
-            whoElement.className = 'who';
-            whoElement.textContent = 'who';
-           
-            whoElement.style.setProperty('--random', Math.random());
-            whoElement.style.setProperty('--random-x', Math.random());
-            whoElement.style.setProperty('--random-y', Math.random());
-            whoElement.style.setProperty('--font-family', getRandomFontFamily());
-           
-            document.body.appendChild(whoElement);
+        // Function to generate "who" elements with random styles
+        function generateWhoElements() {
+            // Remove existing "who" elements
+            const whoElements = document.querySelectorAll('.who');
+            whoElements.forEach(element => element.remove());
+
+            for (let i = 0; i < 50; i++) {
+                // Create a "who" element
+                const whoElement = document.createElement('div');
+                whoElement.className = 'who';
+                whoElement.textContent = 'who';
+                // Set random values for font size, position on x and y axes, and font family
+                whoElement.style.setProperty('--random', Math.random());
+                whoElement.style.setProperty('--random-x', Math.random());
+                whoElement.style.setProperty('--random-y', Math.random());
+                whoElement.style.setProperty('--font-family', getRandomFontFamily());
+                // Append the "who" element to the body
+                document.body.appendChild(whoElement);
+            }
         }
 
-     
+        // Function to get a random font family from a list
         function getRandomFontFamily() {
             const fontFamilies = ['Arial', 'Helvetica', 'Verdana', 'Georgia', 'Times New Roman', 'Courier', 'Comic Sans MS'];
             return fontFamilies[Math.floor(Math.random() * fontFamilies.length)];
         }
+
+        // Generate initial "who" elements
+        generateWhoElements();
+
+        // Refresh "who" elements every 10 seconds
+        setInterval(function() {
+            generateWhoElements();
+        }, 10000);
     </script>
 </body>
 </html>
