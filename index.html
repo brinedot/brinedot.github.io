@@ -6,24 +6,40 @@
         /* Define styles for each "who" element */
         .who {
             /* Set random font size between 12px and 96px */
-            font-size: calc(12px + (150 * var(--random)));
+            font-size: calc(12px + (84 * var(--random)));
             /* Set random position within the viewport on both x and y axes */
             position: absolute;
             top: calc(var(--random-y) * 100vh);
             left: calc(var(--random-x) * 100vw);
             /* Set random font family from the list */
             font-family: var(--font-family);
+            /* Set initial opacity to 1 */
+            opacity: 1;
+            /* Set transition property for smooth opacity transition */
+            transition: opacity 0.5s ease;
+        }
+
+        /* Define styles for faded "who" elements */
+        .who.faded {
+            /* Reduce opacity gradually after every switch */
+            opacity: calc(var(--opacity) * 0.75);
         }
     </style>
 </head>
 <body>
     <!-- Repeat "who" 50 times using JavaScript -->
     <script>
+        // Array to store previous "who" elements
+        const previousWhoElements = [];
+
         // Function to generate "who" elements with random styles
         function generateWhoElements() {
-            // Remove existing "who" elements
-            const whoElements = document.querySelectorAll('.who');
-            whoElements.forEach(element => element.remove());
+            // Store previous "who" elements with reduced opacity
+            previousWhoElements.forEach(element => {
+                const opacity = parseFloat(element.style.getPropertyValue('--opacity'));
+                element.style.setProperty('--opacity', opacity * 0.75);
+                element.classList.add('faded');
+            });
 
             for (let i = 0; i < 50; i++) {
                 // Create a "who" element
@@ -35,8 +51,11 @@
                 whoElement.style.setProperty('--random-x', Math.random());
                 whoElement.style.setProperty('--random-y', Math.random());
                 whoElement.style.setProperty('--font-family', getRandomFontFamily());
+                whoElement.style.setProperty('--opacity', '1');
                 // Append the "who" element to the body
                 document.body.appendChild(whoElement);
+                // Store the "who" element in the previousWhoElements array
+                previousWhoElements.push(whoElement);
             }
         }
 
