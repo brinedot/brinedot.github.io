@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>who</title>
+    <title>Who Page</title>
     <style>
         
         .who {
-            
-            font-size: calc(2px + (700 * var(--random)));
+          
+            font-size: calc(12px + (300px * var(--random)));
             
             position: absolute;
             top: calc(var(--random-y) * 100vh);
             left: calc(var(--random-x) * 100vw);
-            
+           
             font-family: var(--font-family);
         }
     </style>
 </head>
 <body>
-    
+    <!-- Repeat "who" 50 times using JavaScript -->
     <script>
         for (let i = 0; i < 50; i++) {
-            
+          
             const whoElement = document.createElement('div');
             whoElement.className = 'who';
             whoElement.textContent = 'who';
-            
+           
             whoElement.style.setProperty('--random', Math.random());
             whoElement.style.setProperty('--random-x', Math.random());
             whoElement.style.setProperty('--random-y', Math.random());
             whoElement.style.setProperty('--font-family', getRandomFontFamily());
-            
+           
             document.body.appendChild(whoElement);
         }
 
-        
+     
         function getRandomFontFamily() {
-            const fontFamilies = ['Arial', 'fantasy', 'Trattatello', "Marker Felt', 'Stencil Std', "Blippo', 'Jazz LET', 'Chalkduster', Luminari', 'Brush Script MT', Bradley Hand', 'Apple Chancery', 'Snell Roundhand','Impact','Helvetica', 'Verdana', 'Georgia', 'Times New Roman', 'Courier', 'Comic Sans MS'];
+            const fontFamilies = ['Arial', 'Helvetica', 'Verdana', 'Georgia', 'Times New Roman', 'Courier', 'Comic Sans MS'];
             return fontFamilies[Math.floor(Math.random() * fontFamilies.length)];
         }
     </script>
