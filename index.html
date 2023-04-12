@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Who Page</title>
+    <title>who</title>
     <style>
         /* Define styles for each "who" element */
         .who {
             /* Set random font size between 12px and 96px */
-            font-size: calc(12px + (84 * var(--random)));
+            font-size: calc(12px + (150 * var(--random)));
             /* Set random position within the viewport on both x and y axes */
             position: absolute;
             top: calc(var(--random-y) * 100vh);
@@ -52,7 +52,7 @@
         // Refresh "who" elements every 10 seconds
         setInterval(function() {
             generateWhoElements();
-        }, 10000);
+        }, 1000);
     </script>
 </body>
 </html>
