@@ -24,6 +24,23 @@
             /* Reduce opacity gradually after every switch */
             opacity: calc(var(--opacity) * 0.75);
         }
+        h1 {
+        /* Set font size to 12px */
+        font-size: 12px;
+        /* Set color to black by default */
+        color: black;
+        /* Set position to absolute */
+        position: absolute;
+        /* Set top and left to 0 to position at the top-left corner of the screen */
+        top: 0;
+        left: 0;
+        /* Add transition property for smooth color transition */
+        transition: color 0.5s ease;
+    }
+    #link:active + h1 {
+        /* Set color to black when the link is clicked */
+        color: black;
+    }
     </style>
 </head>
     <h1>  <a href="https://brinedot.github.io/h.html">the wonder</a>  </h1>
